@@ -1,5 +1,5 @@
 {
-    "name": "pugx/autocompleter-bundle",
+    "name": "alphalinks/autocompleter-bundle",
     "type": "symfony-bundle",
     "description": "Add an autocomplete type to forms - fork of PUGX/autocompleter-bundle",
     "keywords": ["symfony2 form field"],
