@@ -1,5 +1,4 @@
-(function ($) {
-    'use strict';
+(function($) {
     $.fn.autocompleter = function (options) {
         var settings = {
             url_list: '',
@@ -9,22 +8,23 @@
             if (options) {
                 $.extend(settings, options);
             }
-            var $this = $(this), $fakeInput = $('<input type="text" name="fake' + $this.attr('name') + '">');
+            var $this = $(this);
+
+            var $fakeInput = $('<input type="text" id="fake' + $this.attr('name') + '" name="fake' + $this.attr('name') + '">');
             $this.hide().after($fakeInput);
+
             $fakeInput.autocomplete({
                 source: settings.url_list,
                 select: function (event, ui) {
                     $this.val(ui.item.id);
-                }
+                }            
             });
-            if ($this.val() != '') {
-                $.ajax({
-                    url:     settings.url_get + $this.val(),
-                    success: function (name) {
-                        $fakeInput.val(name);
-                    }
-                });
-            }
+
+            // autocomplete handles cases where an existing record is selected by setting the ID of the record in the original input's val attribute
+            // this handles the case where a new record must be created by setting the string value of the record to be created in the original input's val attribute
+            $fakeInput.keyup(function () {
+                $this.val($fakeInput.val());
+            });
         });
     };
 })(jQuery);

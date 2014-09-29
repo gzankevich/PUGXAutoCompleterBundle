@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="pugx_autocompleter.autocomplete.class">PUGX\AutocompleterBundle\Form\Type\AutocompleteType</parameter>
+        <parameter key="pugx_autocompleter.autocomplete_create_if_missing.class">PUGX\AutocompleterBundle\Form\Type\AutocompleteCreateIfMissingType</parameter>
     </parameters>
 
     <services>
@@ -13,6 +14,10 @@
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <tag name="form.type" alias="autocomplete" />
         </service>
-    </services>
 
+        <service id="pugx_autocompleter.autocomplete_create_if_missing" class="%pugx_autocompleter.autocomplete_create_if_missing.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="form.type" alias="autocomplete_create_if_missing" />
+        </service>
+    </services>
 </container>

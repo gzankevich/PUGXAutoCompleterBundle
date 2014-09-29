@@ -8,7 +8,7 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 
 class ObjectToIdTransformer implements DataTransformerInterface
 {
-    private $om, $class;
+    protected $om, $class;
 
     /**
      * @param ObjectManager $om

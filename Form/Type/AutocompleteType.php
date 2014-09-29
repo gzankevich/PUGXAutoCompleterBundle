@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AutocompleteType extends AbstractType
 {
-    private $om;
+    protected $om;
 
     /**
      * @param ObjectManager $om
@@ -26,6 +26,7 @@ class AutocompleteType extends AbstractType
         if (empty($options['class'])) {
             throw new InvalidConfigurationException('Option "class" must be set.');
         }
+
         $transformer = new ObjectToIdTransformer($this->om, $options['class']);
         $builder->addModelTransformer($transformer);
     }

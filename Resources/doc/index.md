@@ -84,14 +84,14 @@ class AuthorFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('book', 'autocomplete', array('class' => 'AcmeBundle:Book'))
+            ->add('book', 'autocomplete', array('class' => 'Acme\Bundle\Entity\Book'))
         ;
     }
 }
 ```
 
 As you can see, you must pass ``class`` as option to field. The class is the name of
-your entity, and it's used to retrieve your objects from the database.
+your entity, and it is used to retrieve your objects from the database and create them in the case of the AutocompleteCreateMissing field type. You must use the full name of the entity class here, not the doctrine shorthand (e.g. not AcmeBundle:Book but Acme\Bundle\Entity\Book).
 
 Then, you'll need a couple of actions in your controller.
 
