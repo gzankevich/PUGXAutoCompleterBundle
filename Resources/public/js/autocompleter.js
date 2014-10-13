@@ -10,7 +10,7 @@
             }
             var $this = $(this);
 
-            var $fakeInput = $('<input type="text" id="fake' + $this.attr('name') + '" name="fake' + $this.attr('name') + '">');
+            var $fakeInput = $('<input type="text" id="fake' + $this.attr('name') + '" placeholder="' + $this.attr('placeholder') + '" name="fake' + $this.attr('name') + '">');
             $this.hide().after($fakeInput);
 
             $fakeInput.autocomplete({
